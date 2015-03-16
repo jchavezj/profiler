@@ -123,7 +123,10 @@ function host_info(){
 	echo "DNS name servers (DNS IP) : ${dnsips}"
 }
 
-function php_modules(){
+function php_info(){
+	write_header "PHP Info "
+	php -v
+	echo " " 
 	write_header "PHP modules "
 	php -m
 }
@@ -141,4 +144,4 @@ echo   " "
 echo   " "
 	host_info
 echo   " "
-	php_modules
+	php_info
