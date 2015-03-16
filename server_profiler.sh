@@ -123,6 +123,24 @@ function host_info(){
 	echo "DNS name servers (DNS IP) : ${dnsips}"
 }
 
+function disk_info(){
+        write_header "Disk Space"
+        df -h
+        echo " "
+        write_header "Disk Inode "
+        df -hi
+}
+function mysql_info(){
+        write_header "Mysql Version "
+        mysql -V
+}
+
+function mysql_db(){
+        write_header "Total count of databases "
+        mysql -e 'SELECT COUNT(*) FROM information_schema.SCHEMATA';
+
+}
+
 function php_info(){
 	write_header "PHP Info "
 	php -v
@@ -145,3 +163,9 @@ echo   " "
 	host_info
 echo   " "
 	php_info
+echo   " "
+        disk_info
+echo   " "
+        mysql_info
+echo   " "
+        mysql_db
