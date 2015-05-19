@@ -148,6 +148,30 @@ function php_info(){
 	write_header "PHP modules "
 	php -m
 }
+function plesk(){
+	write_header "Plesk Version "
+	cat /usr/local/psa/version
+	echo " "
+
+}
+
+function mailboxes(){
+	write_header " Total Mailboxes"
+	if [ -d /var/qmail/mailnames ];
+    then
+	 find /var/qmail/mailnames -mindepth 2 -maxdepth 2 -type d | wc -l
+    else
+	 echo “No mailboxes”
+fi
+
+}
+
+function cpu(){
+	write_header "Total cores "
+	grep -c ^processor /proc/cpuinfo
+	echo " "
+
+}
 # This returns the finds from the script:
 
 printf "\n*************************************************************************\n"
@@ -169,3 +193,9 @@ echo   " "
         mysql_info
 echo   " "
         mysql_db
+echo   " "
+	plesk
+echo   " "
+        mailboxes
+echo   " "
+	cpu
