@@ -80,7 +80,8 @@ echo -n "${value} ${reg} "
 [[ -f /tmp/res3 ]] && rm -f /tmp/res3
 
 
-#if argument passed script will show statistic only for that pid, of not � we list all processes in /proc/ #and get statistic for all of them, all result we store in file /tmp/res
+#if argument passed script will show statistic only for that pid 
+#and get statistic for all of them, all result we store in file /tmp/res
 if [ $# -eq 0 ]
 then
 	pids=`ls /proc | grep -e [0-9] | grep -v [A-Za-z] `
